@@ -1,0 +1,50 @@
+{
+  "file": "ASEAN_Macro_Report_20260929.xlsx",
+  "size_kb": 40.7,
+  "sheets": [
+    "Cover",
+    "Ringkasan",
+    "Per Indikator",
+    "Data",
+    "Catatan"
+  ],
+  "charts": 8,
+  "data_rows": 480,
+  "checks": [
+    {
+      "nama": "5 sheet sesuai",
+      "lulus": true,
+      "detail": "['Cover', 'Ringkasan', 'Per Indikator', 'Data', 'Catatan']"
+    },
+    {
+      "nama": "chart native ada (>0)",
+      "lulus": true,
+      "detail": "8 chart"
+    },
+    {
+      "nama": "jumlah baris data = sumber",
+      "lulus": true,
+      "detail": "480 vs 480"
+    },
+    {
+      "nama": "header berformat (fill brand)",
+      "lulus": true,
+      "detail": "001F5C3D"
+    },
+    {
+      "nama": "freeze pane di Data",
+      "lulus": true,
+      "detail": "A4"
+    },
+    {
+      "nama": "8 indikator tercakup",
+      "lulus": true,
+      "detail": "8"
+    },
+    {
+      "nama": "6 negara tercakup",
+      "lulus": true,
+      "detail": "6"
+    }
+  ]
+}

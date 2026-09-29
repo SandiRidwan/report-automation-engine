@@ -1,0 +1,16 @@
+﻿__pycache__/
+*.py[cod]
+.venv/
+venv/
+db/*.duckdb
+db/*.duckdb.wal
+data/staging/*
+!data/staging/.gitkeep
+.env
+*.key
+*credentials*.json
+.streamlit/secrets.toml
+# output laporan Excel besar -> tidak di-commit (di-generate ulang)
+output/*.xlsx
+reports/_*
+data/marts/*.csv
