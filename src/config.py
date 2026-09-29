@@ -57,3 +57,14 @@ FONT = "Segoe UI"
 
 REPORT_TITLE = "ASEAN Macroeconomic Report"
 REPORT_SUBTITLE = "Key Indicators 2015–2024 · World Bank Open Data"
+
+# ---- Palet warna (untuk dashboard & chart) --------------------------------
+COLORS = {
+    "primary": "#1F5C3D",   # hijau gelap
+    "accent": "#E4A11B",    # kuning
+    "blue": "#2E6F95",
+    "red": "#C0392B",
+    "purple": "#6A4C93",
+    "teal": "#2A9D8F",
+    "grey": "#8B9AA6",
+}
