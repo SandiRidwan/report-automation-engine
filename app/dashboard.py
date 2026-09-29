@@ -22,6 +22,7 @@ from config import COLORS as C, DB_FILE, MARTS, OUTPUT, THEME  # noqa: E402
 import explanations as X  # noqa: E402
 import insights_content  # noqa: E402,F401
 import insight as INS  # noqa: E402
+import echarts_charts as EC  # noqa: E402  (waterfall, pictorialBar)
 
 st.set_page_config(page_title="Report Automation Engine", page_icon="📊",
                    layout="wide")
@@ -136,6 +137,25 @@ with t1:
     st.plotly_chart(fig, use_container_width=True)
     INS.box("growth", st=st)
 
+    st.markdown("#### Dekomposisi kontribusi pertumbuhan (waterfall ECharts)")
+    st.caption("Waterfall memecah **total pertumbuhan agregat** menjadi "
+               "kontribusi tiap negara, lalu menutup dengan total. Menjawab "
+               "'siapa yang mengangkat/menahan angka ini?' — jauh lebih "
+               "informatif dari bar biasa.")
+    try:
+        _g = g[g["indicator"] == sel].dropna(subset=["growth_pct"]).copy()
+        if len(_g):
+            _g = _g.sort_values("growth_pct", ascending=False)
+            _contrib = (_g["growth_pct"] / len(_g)).round(2).tolist()
+            _cats = list(_g["country"]) + ["Total (rata-rata)"]
+            _vals = _contrib + [0.0]
+            EC.waterfall(_cats, _vals,
+                         title=f"Kontribusi negara ke pertumbuhan {sel} (%)",
+                         yname="kontribusi (%)", height=460)
+    except Exception as _e:  # noqa: BLE001
+        st.caption(f"waterfall tak tersedia ({_e}).")
+    INS.box("growth", st=st)
+
 with t2:
     X.render("category", st=st)
     cat_sel = st.selectbox("Kategori", sorted(cats["category"].unique()))
@@ -148,6 +168,21 @@ with t2:
                                   xaxis_title="", yaxis_title="nilai")
     st.plotly_chart(fig, use_container_width=True)
     st.dataframe(cats, use_container_width=True, hide_index=True)
+    INS.box("category", st=st)
+
+    st.markdown("#### Perbandingan negara — bar bertitik (pictorialBar ECharts)")
+    st.caption("PictorialBar menyajikan nilai rata-rata kategori per negara "
+               "sebagai **blok bertitik** — tampilan ringkas yang cocok untuk "
+               "laporan eksekutif, pesan tetap jelas: negara mana yang tertinggi.")
+    try:
+        _cs = cs.sort_values("avg_value", ascending=False)
+        EC.pictorial_bar(
+            categories=[str(c)[:14] for c in _cs["country"]],
+            values=[float(v) for v in _cs["avg_value"]],
+            symbol="rect", title=f"Rata-rata {cat_sel} per negara",
+            yname="nilai", height=420)
+    except Exception as _e:  # noqa: BLE001
+        st.caption(f"pictorialBar tak tersedia ({_e}).")
     INS.box("category", st=st)
 
 with t3:
