@@ -77,3 +77,53 @@ register(
         "diperbaiki."),
     tingkat="sedang",
 )
+
+
+# --------------------------------------------------------------------------
+# Chart ECharts (v2) — insight & rekomendasi.
+# --------------------------------------------------------------------------
+
+register(
+    "echarts_waterfall",
+    kesimpulan=(
+        "Waterfall memecah TOTAL pertumbuhan agregat menjadi KONTRIBUSI tiap "
+        "negara: bar hijau = pendorong, merah = penahan, biru = total. Ini "
+        "menjawab 'siapa yang mengangkat/menahan angka ini' — jauh lebih berguna "
+        "daripada satu angka rata-rata ASEAN untuk keputusan alokasi."),
+    rekomendasi=[
+        "Identifikasi negara pendorong utama untuk dijadikan studi kasus "
+        "kebijakan yang bisa direplikasi.",
+        "Selidiki negara ber-kontribusi negatif: apakah masalah struktural atau "
+        "guncangan sementara.",
+        "Sajikan waterfall dalam laporan agar pemangku kepentingan melihat "
+        "sumber pertumbuhan, bukan hanya totalnya.",
+    ],
+    risiko=(
+        "Melaporkan hanya total pertumbuhan menyembunyikan divergensi antar-"
+        "negara. Kebijakan berbasis agregat bisa mengabaikan negara yang "
+        "tertinggal, memperlebar ketimpangan regional."),
+    tingkat="sedang",
+)
+
+register(
+    "echarts_pictorial",
+    kesimpulan=(
+        "Bar bertitik menampilkan rata-rata indikator per negara sebagai blok "
+        "visual — ringkas untuk laporan eksekutif. Pesannya tetap sama: "
+        "kesenjangan antar-negara pada indikator ini nyata, dan skalanya (bukan "
+        "hanya urutannya) menentukan besarnya celah yang harus ditutup."),
+    rekomendasi=[
+        "Gunakan perbandingan visual ini sebagai pembuka diskusi alokasi, lalu "
+        "dalami penyebabnya dengan metrik pendukung.",
+        "Perhatikan indikator dengan jurang terlebar antar-negara — di situ "
+        "kerja sama regional paling berdampak.",
+        "Perbarui laporan berkala (scheduler sudah ada) untuk memantau "
+        "penyempitan/pelebaran celah.",
+    ],
+    risiko=(
+        "Menampilkan rata-rata saja menyembunyikan distribusi internal tiap "
+        "negara. Untuk indikator seperti populasi, rata-rata antar-negara "
+        "mudah disalahartikan sebagai 'ukuran tipikal' bila skala tak dibaca "
+        "hati-hati."),
+    tingkat="rendah",
+)

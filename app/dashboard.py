@@ -154,7 +154,7 @@ with t1:
                          yname="kontribusi (%)", height=460)
     except Exception as _e:  # noqa: BLE001
         st.caption(f"waterfall tak tersedia ({_e}).")
-    INS.box("growth", st=st)
+    INS.box("echarts_waterfall", st=st)
 
 with t2:
     X.render("category", st=st)
@@ -183,7 +183,7 @@ with t2:
             yname="nilai", height=420)
     except Exception as _e:  # noqa: BLE001
         st.caption(f"pictorialBar tak tersedia ({_e}).")
-    INS.box("category", st=st)
+    INS.box("echarts_pictorial", st=st)
 
 with t3:
     X.render("method", st=st)
